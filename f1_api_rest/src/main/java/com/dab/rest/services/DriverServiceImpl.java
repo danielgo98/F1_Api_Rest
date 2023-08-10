@@ -30,9 +30,9 @@ public class DriverServiceImpl implements DriverService{
 	}
 
 	@Override
-	public Driver findByName(String firstName) {
-		Driver driver = driverRepository.findByName(firstName);
-		return driver == null ? null : driver;
+	public List<Driver> findByName(String firstName) {
+		List<Driver> drivers = driverRepository.findByName(firstName);
+		return drivers.isEmpty() ? null : drivers;
 	}
 
 	@Override

@@ -10,8 +10,8 @@ import com.dab.rest.entities.Driver;
 
 public interface DriverRepository extends JpaRepository<Driver, Long>{
 	
-	@Query(value = "SELECT d FROM Driver d WHERE d.firstName=:name")
-	Driver findByName(@Param("name") String name);
+	@Query(value = "SELECT d FROM Driver d WHERE d.firstName LIKE %:name%")
+	List<Driver> findByName(@Param("name") String name);
 	
 	@Query(value = "SELECT d FROM Driver d WHERE d.number=:number")
 	Driver findByNumber(@Param("number") Integer number);

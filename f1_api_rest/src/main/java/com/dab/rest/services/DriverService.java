@@ -10,7 +10,7 @@ public interface DriverService {
 	
 	Driver findById(Long id);
 	
-	Driver findByName(String firstName);
+	List<Driver> findByName(String firstName);
 	
 	Driver findByNumber(Integer number);
 	

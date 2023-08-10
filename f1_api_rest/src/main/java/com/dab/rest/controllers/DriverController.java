@@ -45,14 +45,32 @@ public class DriverController {
 		if (driver == null) {
 			Map<String, String> errorMap = new HashMap<>();
 			errorMap.put("Error", "Driver with id " + id + " not found");
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMap);
+			
 		}
 
 		DriverDto driverDto = DriverDto.getDto(driver);
 		return ResponseEntity.status(HttpStatus.FOUND).body(driverDto);
 
 	}
-
+	
+	@RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
+	public ResponseEntity<?> findByName(@PathVariable("name") String name) {
+		
+		List<Driver> drivers = driverService.findByName(name);
+		
+		if(drivers.isEmpty()) {
+			Map<String, String> infoMap = new HashMap<>();
+			infoMap.put("Info", "Drivers not found");
+			
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(infoMap);
+		}
+		List<DriverDto> driversDto = drivers.stream().map(DriverDto::getDto).collect(Collectors.toList());
+		
+		return ResponseEntity.status(HttpStatus.FOUND).body(driversDto);
+	}
+	
+	
+	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public ResponseEntity<?> create(@RequestBody Driver driver) {
 
