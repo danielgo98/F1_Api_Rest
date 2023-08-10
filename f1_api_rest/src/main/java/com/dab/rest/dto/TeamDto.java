@@ -5,15 +5,7 @@ import java.util.Set;
 
 import com.dab.rest.entities.Driver;
 import com.dab.rest.entities.Team;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
 public class TeamDto {
 
